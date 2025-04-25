@@ -1,0 +1,17 @@
+﻿<Window x:Class="Wiring.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wiring"
+        mc:Ignorable="d"
+        Title="Window2" WindowState="Maximized" d:DesignHeight="310.131" d:DesignWidth="400.772">
+    <Grid RenderTransformOrigin="0.498,1.016">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Zrzut ekranu 2024-11-10 172317.png" Opacity="1" Stretch="Uniform"/>
+        </Grid.Background>
+        <TextBox x:Name="textBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="" FontSize="50" VerticalAlignment="Center" Width="569" PreviewKeyDown="textBox_PreviewKeyDown" Height="79"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,49,0,0" TextWrapping="Wrap" FontSize="50" VerticalAlignment="Top" FontWeight="Bold"><Run Language="pl-pl" Text="Zeskanuj przepustkę"/><Run Text=":"/></TextBlock>
+
+    </Grid>
+</Window>

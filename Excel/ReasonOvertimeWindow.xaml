@@ -1,0 +1,16 @@
+﻿<Window x:Class="Wiring.ReasonOvertimeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wiring"
+        mc:Ignorable="d"
+        Title="ReasonOvertimeWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="45,60,0,0" TextWrapping="Wrap" FontSize="28" Text="Proszę wybrać powód DT" VerticalAlignment="Top" Width="689"/>
+        <ComboBox x:Name="comboBoxReasons" HorizontalAlignment="Left" Margin="45,153,0,0" FontSize="21" VerticalAlignment="Top" Width="689" SelectionChanged="comboBox_SelectionChanged"/>
+        <TextBox x:Name="textBoxOtherReason" HorizontalAlignment="Left" FontSize="16" Margin="45,257,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="689" Height="118" KeyDown="textBoxOtherReason_KeyDown"/>
+        <Label x:Name="labelOtherReason" Content="Podaj inny powód:" HorizontalAlignment="Left" Margin="45,223,0,0" FontSize="18" VerticalAlignment="Top" RenderTransformOrigin="0.052,1.342"/>
+
+    </Grid>
+</Window>

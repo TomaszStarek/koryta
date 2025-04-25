@@ -1,0 +1,98 @@
+﻿<Window x:Class="Wiring.ReasonOvertimeWindowKafelki"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wiring"
+        mc:Ignorable="d"
+        Title="Wybierz powód DT" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Kafelek 1 -->
+        <Button x:Name="button1" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="0" Grid.Column="0" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Cykl niezgodny" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+
+        <!-- Kafelek 2 -->
+        <Button x:Name="button2" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="0" Grid.Column="1" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Niewłaściwy montaż - błędy operatora" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+
+        <!-- Kafelek 3 -->
+        <Button x:Name="button3" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="0" Grid.Column="2" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Niejasna instrukcja" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+
+        <!-- Kafelek 4 -->
+        <Button x:Name="button4" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="1" Grid.Column="0" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Wadliwy materiał" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+
+        <!-- Kafelek 5 -->
+        <Button x:Name="button5" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="1" Grid.Column="1" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Brak materiału" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+
+        <!-- Kafelek 6 -->
+        <Button x:Name="button6" 
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Stretch" 
+                Margin="10" 
+                FontSize="18"
+                Padding="10"
+                Grid.Row="1" Grid.Column="2" Click="button_Click">
+            <Button.Content>
+                <TextBlock Text="Inne" TextWrapping="Wrap" TextAlignment="Center" />
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>
