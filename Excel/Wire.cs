@@ -22,6 +22,7 @@ namespace Wiring
         public string Colour { get; set; } = "";
         public double CrossSection { get; set; } = 0.0;
         public string Type { get; set; } = "";
+        public string Bus { get; set; } = "";
         public double Lenght { get; set; } = 0.0;
         public double? Progress { get; set; } = 0;
         public DateTime Start { get; set; } = DateTime.Now;

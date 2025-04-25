@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Drawing.Charts;
+using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Vml;
 using System;
 using System.Collections.Generic;
@@ -67,8 +68,8 @@ namespace Wiring
                 return;
             }
             // Do something with the selected wire
-            if (!Skipped)
-            {
+            //if (!Skipped)
+            //{
                 if (selectedWire.WireStatus != (int?)Data.Status.AllConfirmed)
                 {
                     var timespan = DateTime.Now - selectedWire.Start;
@@ -89,7 +90,7 @@ namespace Wiring
                 }
                 else
                     LabelValue = Math.Round(selectedWire.Seconds + selectedWire.SecondsSource + selectedWire.SecondsDestination + selectedWire.HandlingTime, 1);
-            }
+            //}
 
 
             //if (LabelValue > selectedWire.TimeForExecuting)
@@ -140,9 +141,9 @@ namespace Wiring
 
         private void LoadDataFromExcel()
         {
-            string fileName = "\\\\KWIPUBV04\\General$\\Enercon\\Shared\\wiring\\PrzewodyProgramWszystkie.xlsx"; //śzieżka pod którą jest lista excel z której są pobierane dane
-
-         //   string fileName = "C:\\ener\\PrzewodyProgramWszystkie.xlsx"; //śzieżka pod którą jest lista excel z której są pobierane dane
+          //  string fileName = "\\\\KWIPUBV04\\General$\\Enercon\\Shared\\wiring\\PrzewodyProgramWszystkie.xlsx"; //śzieżka pod którą jest lista excel z której są pobierane dane
+            string fileName = @"C:\Users\2281209\Downloads\\Koryta i szyny.xlsx";
+            //   string fileName = "C:\\ener\\PrzewodyProgramWszystkie.xlsx"; //śzieżka pod którą jest lista excel z której są pobierane dane
 
 
             using (var excelWorkbook = new XLWorkbook(fileName)) //otwiera podany plik excel
@@ -169,19 +170,8 @@ namespace Wiring
 
                                 _wire.NameOfCabinet = item.Name; //nazwa szafy brana jest z nazwy zakładki
                                 _wire.Number = dataRow.Cell(1).Value.GetText(); //czytamy pierwszą kolumnę jako numer itd
-                                _wire.DtSource = dataRow.Cell(4).Value.GetText();
-                                _wire.WireEndDimensionSource = dataRow.Cell(7).Value.GetText();
-                                _wire.WireEndTerminationSource = dataRow.Cell(6).Value.GetText();
-
-                                _wire.DtTarget = dataRow.Cell(8).Value.GetText();
-                                _wire.WireEndTerminationTarget = dataRow.Cell(10).Value.GetText();
-                                _wire.WireEndDimensionTarget = dataRow.Cell(11).Value.GetText();
-                                _wire.Colour = dataRow.Cell(12).Value.GetText();
-                                _wire.CrossSection = ParseFromStringToDouble(dataRow.Cell(13).Value.GetText().Replace('.',','));
-                                _wire.Type = dataRow.Cell(14).Value.GetText();
-                                _wire.Lenght = ParseFromStringToDouble(dataRow.Cell(16).Value.GetText());
-
-                                _wire.TimeForExecuting = ParseFromStringToDouble(dataRow.Cell(18).Value.GetText());
+                                _wire.Bus = dataRow.Cell(5).Value.GetText();
+                                _wire.TimeForExecuting = ParseFromStringToDouble(dataRow.Cell(7).Value.GetText());
 
                                 myData.ListOfImportedCabinets[counter].Add(_wire); //finalne dodanie przewodu do listy
                             }
@@ -951,18 +941,18 @@ namespace Wiring
                 if (selectedWire != null && listView.Items[0] != selectedWire)
                 {
                     // Jeśli poprzedni element ma WireStatus <= 0, zablokuj zmianę zaznaczenia
-                    if(!Skipped)
-                    {
-                        if (selectedWire.WireStatus <= 0)
-                        {
-                            // Zablokuj zmianę zaznaczenia
-                            e.Handled = true;
-                            textBox.Text = string.Empty;
-                            // Wyświetl komunikat lub wykonaj inną akcję
-                            MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
-                            return;
-                        }
-                    }
+                    //if(!Skipped)
+                    //{
+                    //    if (selectedWire.WireStatus <= 0)
+                    //    {
+                    //        // Zablokuj zmianę zaznaczenia
+                    //        e.Handled = true;
+                    //        textBox.Text = string.Empty;
+                    //        // Wyświetl komunikat lub wykonaj inną akcję
+                    //        MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
+                    //        return;
+                    //    }
+                    //}
 
                 }
                 var filteredList = myData.ListOfImportedCabinets[_findedCabinetIndex]
@@ -977,24 +967,24 @@ namespace Wiring
 
                 if (curIndex >= 0) // Jeśli znaleziono indeks
                 {
-                    if (selectedWire != null && listView.Items[0] != selectedWire)
-                    {
-                        if (!Skipped)
-                        {
-                            // Jeśli poprzedni element ma WireStatus <= 0, zablokuj zmianę zaznaczenia
-                            if (selectedWire.WireStatus <= 0)
-                            {
-                                // Zablokuj zmianę zaznaczenia
-                                e.Handled = true;
+                    //if (selectedWire != null && listView.Items[0] != selectedWire)
+                    //{
+                    //    if (!Skipped)
+                    //    {
+                    //        // Jeśli poprzedni element ma WireStatus <= 0, zablokuj zmianę zaznaczenia
+                    //        if (selectedWire.WireStatus <= 0)
+                    //        {
+                    //            // Zablokuj zmianę zaznaczenia
+                    //            e.Handled = true;
 
-                                textBox.Text = string.Empty;
-                                // Wyświetl komunikat lub wykonaj inną akcję
-                                //  MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
-                                return;
-                            }
-                        }
+                    //            textBox.Text = string.Empty;
+                    //            // Wyświetl komunikat lub wykonaj inną akcję
+                    //            //  MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
+                    //            return;
+                    //        }
+                    //    }
 
-                    }
+                    //}
 
 
                     listView.SelectedIndex = curIndex;
@@ -1031,8 +1021,8 @@ namespace Wiring
             }
 
             selectedWire.Start = DateTime.Now;
-            Skipped = false;
-            selectedWire.Skipped = false;
+         //   Skipped = false;
+         //   selectedWire.Skipped = true;
         }
 
         private void listView_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -1045,23 +1035,23 @@ namespace Wiring
                 // MessageBox.Show($"Selected Wire: {bus}, {number}");
             }
 
-            if (listView.Items[0] != selectedWire)
-            {
-                if (!Skipped)
-                {
-                    // Jeśli poprzedni element ma WireStatus <= 0, zablokuj zmianę zaznaczenia
-                    if (selectedWire.WireStatus <= 0)
-                    {
-                        // Zablokuj zmianę zaznaczenia
-                        e.Handled = true;
+            //if (listView.Items[0] != selectedWire)
+            //{
+            //    //if (!Skipped)
+            //    //{
+            //        // Jeśli poprzedni element ma WireStatus <= 0, zablokuj zmianę zaznaczenia
+            //        if (selectedWire.WireStatus <= 0)
+            //        {
+            //            // Zablokuj zmianę zaznaczenia
+            //            e.Handled = true;
 
-                        // Wyświetl komunikat lub wykonaj inną akcję
-                        MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
-                        return;
-                    }
-                }
+            //            // Wyświetl komunikat lub wykonaj inną akcję
+            //            MessageBox.Show($"Nie możesz zmienić zaznaczenia, ponieważ element \"{selectedWire.Number}\" nie został zatwierdzony.", "Uwaga");
+            //            return;
+            //        }
+            //    //}
                 
-            }
+            //}
 
         }
         private void CountProgress()
@@ -1102,8 +1092,8 @@ namespace Wiring
             selectedWire.HandlingTime += selectedWire.Seconds;
             selectedWire.Seconds = 0;
             FileOperations.SaveSingleLog(myData.ListOfImportedCabinets[_findedCabinetIndex][0].NameOfCabinet, selectedWire);
-            Skipped = true;
-            selectedWire.Skipped = true;
+         //   Skipped = true;
+         //   selectedWire.Skipped = true;
             Data.StartHandling = DateTime.Now;  
         }
 

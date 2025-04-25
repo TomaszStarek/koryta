@@ -88,15 +88,10 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel>
-                            <TextBlock Text=" " />
+                            <TextBlock Text="Obraz nr." />
                             <!--tu był napis "No"-->
                             <TextBlock Text="{Binding Number}" FontWeight="Bold" Cursor="Hand" />
-                            <TextBlock Text=", " />
-                            <TextBlock Text=" " />
-                            <!--tu był napis "DtS"-->
-                            <TextBlock Text="{Binding DtSource}" FontWeight="Bold" Cursor="Hand" />
-                            <TextBlock Text=" [] " />
-                            <TextBlock Text="{Binding DtTarget}" TextDecorations="Underline" Foreground="Black" Cursor="Hand" />
+        
                             <!--tu zmieniłem kolor z niebieskiego na czarny"-->
                             <TextBlock Text="" />
                         </WrapPanel>
@@ -106,20 +101,12 @@
         </Expander>
 
 
-        <TextBlock x:Name="HeaderTextBlock" DataContext="{Binding SelectedItem, ElementName=listView, NotifyOnTargetUpdated=True}" Text="{Binding Number, StringFormat=Przewód nr. \{0\}}" VerticalAlignment="Top" RenderTransformOrigin="0.41,0.231" FontSize="40" Margin="412,40,146,0" TargetUpdated="TextBlock_TargetUpdated" />
+        <TextBlock x:Name="HeaderTextBlock" DataContext="{Binding SelectedItem, ElementName=listView, NotifyOnTargetUpdated=True}" Text="{Binding Number, StringFormat=Obraz nr. \{0\}}" VerticalAlignment="Top" RenderTransformOrigin="0.41,0.231" FontSize="40" Margin="412,40,146,0" TargetUpdated="TextBlock_TargetUpdated" />
         <TextBlock DataContext="{Binding SelectedItem, ElementName=listView, NotifyOnTargetUpdated=True}" Foreground="Black" Text="{Binding NameOfCabinet, StringFormat=Szafa: \{0\}}" VerticalAlignment="Top" RenderTransformOrigin="0.41,0.231" FontSize="40" Margin="412,2,632,0" TargetUpdated="TextBlock_TargetUpdated" Height="71" />
 
 
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Text="{Binding Lenght, StringFormat=Długość: \{0\} mm}" RenderTransformOrigin="0.41,0.231"  TextAlignment="Center" FontSize="32" Margin="838,97,535,844"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Text="{Binding Type, StringFormat=Typ: \{0\}}" RenderTransformOrigin="0.41,0.231" FontSize="32" Margin="1326,96,228,845"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Text="{Binding CrossSection, StringFormat=Przekrój: \{0\} mm}" RenderTransformOrigin="0.41,0.231" FontSize="32" Margin="480,96,1010,845"/>
+ 
 
-
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="Black" Text="{Binding DtSource, StringFormat=Source: \{0\}}" TextWrapping="NoWrap" RenderTransformOrigin="0.41,0.231" TextAlignment="Left" FontSize="30" Margin="440,200,759,735" TextDecorations="Underline"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="Black" Text="{Binding DtTarget, StringFormat=Destination: \{0\}}" TextWrapping="NoWrap" RenderTransformOrigin="0.41,0.231" TextAlignment="Left" FontSize="30" Margin="1201,200,34,735" TextDecorations="Underline"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="Black" Text="{Binding WireEndTerminationSource, StringFormat=Końcówka: \{0\}}" RenderTransformOrigin="0.41,0.231"  TextAlignment="Left" FontSize="28" Margin="440,151,846,789" FontWeight="Bold"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="Black" Text="{Binding WireEndTerminationTarget, StringFormat=Końcówka: \{0\}}" RenderTransformOrigin="0.41,0.231"  TextAlignment="Left" FontSize="28" Margin="1201,151,34,789" FontWeight="Bold"/>
-        <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="Black" Text="{Binding Colour, StringFormat=Kolor: \{0\}}" RenderTransformOrigin="0.41,0.231"  TextAlignment="Center" FontSize="32" Margin="1548,95,-13,845" FontWeight="Bold"/>
 
         <TextBlock DataContext="{Binding SelectedItem, ElementName=listView, StringFormat=N2}" Foreground="Black" Text="{Binding Progress, StringFormat=\{0\}%}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="0.41,0.231" FontSize="65" Margin="0,-15,12,896" TextDecorations="Underline" HorizontalAlignment="Right" />
 
@@ -128,36 +115,6 @@
 
         <TextBlock Foreground="Black" Text="{Binding TotalTime, StringFormat=\{0\}s}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="0.41,0.231" FontSize="65" Margin="0,-13, 509,885" HorizontalAlignment="Right" />
         <TextBlock Foreground="Black" Text="{Binding TotalExpectedTime, StringFormat=\\\{0\}s}" TextWrapping="WrapWithOverflow" RenderTransformOrigin="0.41,0.231" FontSize="65"  Margin="1410,-13,12,880" HorizontalAlignment="Left" />
-
-
-        <TextBlock  DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="#FF141315" RenderTransformOrigin="0.41,0.231"  TextAlignment="Center" FontSize="32" Margin="353,0,1010,121" FontWeight="Bold" VerticalAlignment="Bottom">
-            <TextBlock.Resources>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value= "0">
-                            <Setter Property="Text"
-                            Value="Brak potwierdzenia" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="1">
-                            <Setter Property="Text"
-                            Value="Potwierdzono Source" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="2">
-                            <Setter Property="Text"
-                            Value="Brak potwierdzenia" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="3">
-                            <Setter Property="Text"
-                            Value="Potwierdzono Source" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Resources>
-        </TextBlock>
         <TextBlock DataContext="{Binding SelectedItem, ElementName=listView}" Foreground="#FF141315"  RenderTransformOrigin="0.41,0.231"  TextAlignment="Center" FontSize="32" Margin="1369,0,-6,121" FontWeight="Bold" VerticalAlignment="Bottom">
             <TextBlock.Resources>
                 <Style TargetType="{x:Type TextBlock}">
@@ -226,81 +183,6 @@
             </Button.Resources>
         </Button>
 
-
-        <Button x:Name="btnSourceConfirm" DataContext="{Binding SelectedItem, ElementName=listView}"  HorizontalAlignment="Left" Margin="493,866,0,0" VerticalAlignment="Bottom" Height="121" Width="220" Click="SourceConfirm_Click" FontSize="20">
-            <Button.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value= "0">
-                            <Setter Property="Content"
-                            Value="Potwierdz Source" />
-                            <Setter Property="Background"
-                            Value="Orange" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="1">
-                            <Setter Property="Content"
-                            Value="Odznacz Source" />
-                            <Setter Property="Background"
-                            Value="Yellow" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="2">
-                            <Setter Property="Content"
-                            Value="Potwierdz Source" />
-                            <Setter Property="Background"
-                          Value="DeepSkyBlue" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="3">
-                            <Setter Property="Content"
-                            Value="Odznacz Source" />
-                            <Setter Property="Background"
-                          Value="LawnGreen" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Resources>
-        </Button>
-
-        <Button x:Name="btnConfirmBoth" DataContext="{Binding SelectedItem, ElementName=listView}"  HorizontalAlignment="Left" Margin="926,0,0,0" VerticalAlignment="Bottom" Height="121" Width="220" Click="SourceConfirm_Click" FontSize="20" Visibility="Visible">
-            <Button.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value= "0">
-                            <Setter Property="Content"
-                            Value="Potwierdz wszystkie" />
-                            <Setter Property="Background"
-                            Value="Orange" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="1">
-                            <Setter Property="Content"
-                            Value="Potwierdz wszystkie" />
-                            <Setter Property="Background"
-                            Value="Yellow" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="2">
-                            <Setter Property="Content"
-                            Value="Potwierdz wszystkie" />
-                            <Setter Property="Background"
-                            Value="DeepSkyBlue" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding WireStatus}"
-                            Value="3">
-                            <Setter Property="Content"
-                            Value="Odznacz wszystkie" />
-                            <Setter Property="Background"
-                            Value="LawnGreen" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Resources>
-        </Button>
-
         <Button x:Name="buttonMode" Content="Skaner" HorizontalAlignment="Left" Margin="393,104,0,0" VerticalAlignment="Top" Width="47" Height="27" Click="button_Click"/>
         <Image x:Name="image_All" HorizontalAlignment="Left" Height="521" Margin="917,280,0,0" VerticalAlignment="Top" Width="419" OpacityMask="Black" MouseLeftButtonDown="image_Source_GotMouseCapture"/>
         <Image x:Name="image_Target" HorizontalAlignment="Left" Height="524" Margin="1349,280,0,0" VerticalAlignment="Top" Width="515" OpacityMask="Black" MouseLeftButtonDown="image_Source_GotMouseCapture"/>
@@ -330,32 +212,6 @@
             </TextBlock.RenderTransform><Run Text="Ver. "/><Run Language="pl-pl" Text="7"/><Run Text=".00"/><Run Text=" NET"/><Run Text=" 8.0"/></TextBlock>
         <TextBox x:Name="textBox1" IsReadOnly="True" DataContext="{Binding SelectedItem, ElementName=listView}" Text="{Binding Addnotations, StringFormat=\{0\}}" HorizontalAlignment="Left" Margin="1165,0,0,21" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="338" Height="72"/>
         <Button Content="Dodaj swoje uwagi:" HorizontalAlignment="Left" Margin="1178,0,0,105" VerticalAlignment="Bottom" Click="Button_Click_1"/>
-        <Button x:Name="button"  HorizontalAlignment="Left" Margin="0,879,0,0" FontSize="30" VerticalAlignment="Top" Height="128" Width="395" Click="button_Click_2">
-            <Button.Resources>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Skipped}"
-                            Value= "false">
-                            <Setter Property="Content"
-                            Value="Pomiń przewód" />
-                            <Setter Property="Background"
-                            Value="Orange" />
-                            <Setter Property="IsEnabled"
-                           Value="True" />
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Skipped}"
-                            Value="true">
-                            <Setter Property="Content"
-                            Value="Pominięto przewód" />
-                            <Setter Property="Background"
-                            Value="Yellow" />
-                            <Setter Property="IsEnabled"
-                            Value="False" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Resources>
-        </Button>
 
 
 
